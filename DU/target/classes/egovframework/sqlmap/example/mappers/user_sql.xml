@@ -23,4 +23,15 @@
 				user_id = #{userId}; 
 		]]>
 	</select>
+	
+	<select id="selectPwd" parameterType="string" resultType="string">
+		<![CDATA[
+			SELECT
+				pwd
+			FROM
+				tb_user
+			WHERE
+				user_id = #{userId}; 
+		]]>
+	</select>
 </mapper>

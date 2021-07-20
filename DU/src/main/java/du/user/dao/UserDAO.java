@@ -5,5 +5,7 @@ import du.user.domain.UserVO;
 public interface UserDAO {
 	
 	public UserVO selectUserInfo(String userId);
+	
+	public String selectPwd(String userId);
 
 }

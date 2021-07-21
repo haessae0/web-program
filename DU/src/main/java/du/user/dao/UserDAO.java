@@ -3,9 +3,13 @@ package du.user.dao;
 import du.user.domain.UserVO;
 
 public interface UserDAO {
+	public String selectPwd(String id);
 	
-	public UserVO selectUserInfo(String userId);
+	public UserVO selectUserInfo(String id);
 	
-	public String selectPwd(String userId);
+	public void updateUser(UserVO user);
 
+	public void insertUser(UserVO user);
+
+	public void deleteUser(String id);
 }

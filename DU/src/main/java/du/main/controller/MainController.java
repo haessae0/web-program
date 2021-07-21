@@ -52,7 +52,7 @@ public class MainController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginPage() {
-		return "login.html";
+		return "login.jsp";
 	}
 
 }

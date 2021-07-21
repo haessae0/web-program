@@ -1,6 +1,22 @@
 package du.user.service;
 
-public interface UserService {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-	public boolean isLogin(String userId, String userPw) throws Exception;
+import du.user.domain.UserVO;
+
+public interface UserService {
+	
+	public String selectPwd(String id);
+	
+	public UserVO selectUserInfo(String id);
+	
+	public Boolean loginProcess(HttpServletRequest request, UserVO user);
+	
+	public void updateUser(UserVO user);
+	
+	public void insertUser(UserVO user);
+	
+	public void deleteUser(HttpSession session);
+	
 }

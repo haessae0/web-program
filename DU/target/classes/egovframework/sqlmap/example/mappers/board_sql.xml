@@ -3,16 +3,17 @@
 <mapper namespace="Board">
 
 	<resultMap type="boardMap" id="BoardVO">
-		<id property="idx"				column="idx"/>
-		<result property="title"		column="title"/>
-		<result property="content"		column="content"/>
-		<result property="writerId"		column="writer_id"/>
-		<result property="writerName"	column="writer_name"/>
-		<result property="registDate"	column="regist_date"/>
-		<result property="modifyDate"	column="modify_date"/>
+		<id property="idx" column="idx" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writerId" column="writer_id" />
+		<result property="writerName" column="writer_name" />
+		<result property="registDate" column="regist_date" />
+		<result property="modifyDate" column="modify_date" />
 	</resultMap>
-	
-	<select id="selectBoardList" parameterType="HashMap" resultMap="BoardVO">
+
+	<select id="selectBoardList" parameterType="HashMap"
+		resultMap="BoardVO">
 		<![CDATA[ 
 			SELECT 
 				A.*, B.name AS writer_name
@@ -25,11 +26,13 @@
 			</if>
 		</where>
 		<![CDATA[ 
+			ORDER BY A.idx DESC
 			LIMIT #{startList}, #{listSize}
 		]]>
 	</select>
-	
-	<select id="selectBoardListCnt" parameterType="String" resultType="int">
+
+	<select id="selectBoardListCnt" parameterType="String"
+		resultType="int">
 		<![CDATA[ 
 			SELECT
 				count(*)
@@ -42,7 +45,19 @@
 			</if>
 		</where>
 	</select>
-	
+
+	<select id="selectBoard" parameterType="Long"
+		resultMap="BoardVO">
+		<![CDATA[ 
+			SELECT 
+				A.*, B.name AS writer_name
+			FROM 
+				tb_board A INNER JOIN tb_user B ON A.writer_id = B.user_id
+			WHERE
+				A.idx=#{idx}
+		]]>
+	</select>
+
 	<insert id="insertBoard" parameterType="boardMap">
 		<![CDATA[ 
 			INSERT INTO tb_board
@@ -51,5 +66,26 @@
 				(#{title}, #{content}, #{writerId})
 		]]>
 	</insert>
+
+	<delete id="deleteBoard" parameterType="Long">
+		<![CDATA[ 
+			DELETE FROM tb_board
+			WHERE 
+				idx = #{idx}
+		]]>
+
+	</delete>
+
+	<update id="updateBoard" parameterType="boardMap">
+		<![CDATA[ 
+			UPDATE tb_board
+			SET
+				title = #{title},
+				content = #{content},
+				modify_date = NOW()
+			WHERE
+				idx = #{idx}
+		]]>
+	</update>
 
 </mapper>

@@ -16,4 +16,16 @@ public class DeptDAOImpl extends EgovAbstractMapper implements DeptDAO {
 		return selectList("Dept.selectDeptList");
 	}
 
+	@Override
+	public void insertDept(DeptVO dept) {
+		insert("Dept.insertDept", dept);
+		
+	}
+
+	@Override
+	public void deleteDept(String deptCd) {
+		delete("Dept.deleteDept", deptCd);
+		
+	}
+
 }

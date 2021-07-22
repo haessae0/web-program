@@ -17,6 +17,9 @@
 <title>부서 정보</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/jsp/layout/header.jsp"></jsp:include>
+	</header>
 	<table class="table table-dark table-striped">
 		<thead>
 			<tr>
@@ -30,14 +33,16 @@
 				<tr>
 					<td><c:out value="${item.deptCd}"></c:out></td>
 					<td><c:out value="${item.deptNm}"></c:out></td>
-					<td><button type="button" onclick="window.location.href='deleteDept.do?deptCd=${item.deptCd}'">삭제</button></td>
+					<td><button type="button"
+							onclick="window.location.href='deleteDept.do?deptCd=${item.deptCd}'">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<div>
 		<button type="button" onclick="window.history.go(-1)">이전</button>
-		<button type="button" onclick="window.location.href='deptInsertPage.do'">등록</button>
+		<button type="button"
+			onclick="window.location.href='deptInsertPage.do'">등록</button>
 	</div>
 
 </body>

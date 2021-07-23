@@ -7,9 +7,9 @@ public interface UserDAO {
 	
 	public UserVO selectUserInfo(String id);
 	
-	public void updateUser(UserVO user);
-
 	public void insertUser(UserVO user);
-
-	public void deleteUser(String id);
+	
+	public void updateUser(UserVO user);
+	
+	public void deleteUser(String userId);
 }

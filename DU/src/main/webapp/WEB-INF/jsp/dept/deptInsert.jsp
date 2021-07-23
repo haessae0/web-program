@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,18 +7,15 @@
 <title>부서 등록</title>
 </head>
 <body>
-	<header>
-		<jsp:include page="/WEB-INF/jsp/layout/header.jsp"></jsp:include>
-	</header>
-	<form action="deptInsert.do" method="POST">
+	<form action="deptInsert.do" method="post">
 		<table>
 			<tr>
 				<th>부서코드</th>
-				<td><input type='text' name="deptCd" required></td>
+				<td><input type="text" name="deptCd" required></td>
 			</tr>
 			<tr>
 				<th>부서명</th>
-				<td><input type='text' name="deptNm" required></td>
+				<td><input type="text" name="deptNm" required></td>
 			</tr>
 		</table>
 		<div>

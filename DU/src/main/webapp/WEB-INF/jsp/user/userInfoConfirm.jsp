@@ -7,13 +7,13 @@
 <title>비밀번호 확인</title>
 </head>
 <body>
-	<form action="userInfo.do" method="post">
-		<input type="hidden" name="userId" value="${USER.userId}">	
-		비밀번호 확인: <input type="password" name="pwd">
-		<div>
-			<button type="submit">확인</button>
-			<button type="button" onclick="window.history.go(-1)">이전</button>
-		</div>
-	</form>
+<form action="userInfoConfirm.do" method="post">
+	<input type="hidden" name="userId" value="${USER.userId}">
+	비밀번호 확인 : <input type="password" name="pwd">
+	<div>
+		<button type="submit">확인</button>
+		<button type="button" onclick="window.history.go(-1)">이전</button>
+	</div>
+</form>
 </body>
 </html>

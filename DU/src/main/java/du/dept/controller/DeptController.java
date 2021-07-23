@@ -12,7 +12,6 @@ import du.dept.service.DeptService;
 
 @Controller
 public class DeptController {
-	
 	@Autowired
 	private DeptService deptService;
 	
@@ -22,7 +21,7 @@ public class DeptController {
 		List<DeptVO> dept = deptService.selectDeptList();
 		mav.addObject("dept", dept);
 		return mav;
-	} 
+	}
 	
 	@RequestMapping("/deptInsertPage.do")
 	public String deptInsertPage() {

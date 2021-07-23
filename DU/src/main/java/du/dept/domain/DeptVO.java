@@ -1,17 +1,15 @@
 package du.dept.domain;
 
 public class DeptVO {
-
 	private String deptCd;
-	
 	private String deptNm;
-
+	
 	public String getDeptCd() {
 		return deptCd;
 	}
-
-	public void setDeptCd(String deptCd) {
-		this.deptCd = deptCd;
+	
+	public void setDeptCd(String _deptCd) {
+		deptCd = _deptCd;
 	}
 
 	public String getDeptNm() {
@@ -21,5 +19,4 @@ public class DeptVO {
 	public void setDeptNm(String deptNm) {
 		this.deptNm = deptNm;
 	}
-
 }

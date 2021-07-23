@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="User">
 
-	<resultMap type="UserMap" id="UserVO">
+	<resultMap type="userMap" id="UserVO">
 		<id property="userId"			column="user_id"/>
 		<result property="pwd"			column="pwd"/>
 		<result property="name"			column="name"/>
@@ -27,7 +27,7 @@
 	<select id="selectUserInfo" parameterType="String" resultMap="UserVO">
 		<![CDATA[ 
 			SELECT 
-				A.user_id, A.name, B.dept_nm, A.job, A.phone, A.email, A.dept_cd 
+				A.user_id, A.name, B.dept_nm, A.job, A.dept_cd, A.phone, A.email 
 			FROM 
 				TB_USER A INNER JOIN TB_DEPT_CD B ON A.dept_cd = B.dept_cd
 			WHERE
@@ -36,8 +36,8 @@
 	</select>
 	
 	<insert id="insertUser" parameterType="UserMap">
-		<![CDATA[ 
-			INSERT INTO tb_user 
+		<![CDATA[
+			INSERT INTO tb_user
 				(user_id, pwd, name, dept_cd, job, phone, email)
 			VALUES
 				(#{userId}, #{pwd}, #{name}, #{deptCd}, #{job}, #{phone}, #{email})
@@ -45,7 +45,7 @@
 	</insert>
 	
 	<update id="updateUser" parameterType="UserMap">
-		<![CDATA[ 
+		<![CDATA[
 			UPDATE tb_user
 			SET
 				pwd = #{pwd},
@@ -60,7 +60,7 @@
 	</update>
 	
 	<delete id="deleteUser" parameterType="String">
-		<![CDATA[ 
+		<![CDATA[
 			DELETE FROM tb_user
 			WHERE
 				user_id = #{userId}

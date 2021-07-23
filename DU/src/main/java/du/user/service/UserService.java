@@ -7,16 +7,15 @@ import du.user.domain.UserVO;
 
 public interface UserService {
 	
-	public String selectPwd(String id);
+	public Boolean selectPwd(String id, String password);
 	
 	public UserVO selectUserInfo(String id);
 	
 	public Boolean loginProcess(HttpServletRequest request, UserVO user);
 	
-	public void updateUser(UserVO user);
-	
 	public void insertUser(UserVO user);
 	
-	public void deleteUser(HttpSession session);
+	public void updateUser(UserVO user);
 	
+	public void deleteUser(HttpSession session);
 }

@@ -1,9 +1,11 @@
 package du.common;
 
 public class Pagination {
-	
+
+	//한페이지당 보여질 목록 갯수
 	private int listSize = 10;
 	
+	//한 페이지 범위에 보여질 페이지 갯수
 	private int rangeSize = 2;
 	
 	//현재 페이지
@@ -15,22 +17,22 @@ public class Pagination {
 	//총 게시물 수
 	private int listCnt;
 	
-	//총 페이지 범위 개수
+	//총 페이지 범위의 갯수
 	private int pageCnt;
 	
-	//각 페이지 범위의 시작번호
+	//각 페이지 범위의 시작 번호
 	private int startPage;
-	
-	//
-	private int startList;
 	
 	//각 페이지 범위의 끝 번호
 	private int endPage;
 	
-	//이전 페이지 여부
+	
+	private int startList;
+	
+	//이전 페이지
 	private boolean prev;
 	
-	//다음 페이지 여부
+	//다음 페이지
 	private boolean next;
 
 	public int getListSize() {
@@ -39,6 +41,14 @@ public class Pagination {
 
 	public void setListSize(int listSize) {
 		this.listSize = listSize;
+	}
+
+	public int getRangeSize() {
+		return rangeSize;
+	}
+
+	public void setRangeSize(int rangeSize) {
+		this.rangeSize = rangeSize;
 	}
 
 	public int getPage() {
@@ -57,12 +67,12 @@ public class Pagination {
 		this.range = range;
 	}
 
-	public int getPageCnt() {
-		return pageCnt;
+	public int getListCnt() {
+		return listCnt;
 	}
 
-	public void setPageCnt(int pageCnt) {
-		this.pageCnt = pageCnt;
+	public void setListCnt(int listCnt) {
+		this.listCnt = listCnt;
 	}
 
 	public int getStartPage() {
@@ -73,20 +83,20 @@ public class Pagination {
 		this.startPage = startPage;
 	}
 
-	public int getStartList() {
-		return startList;
-	}
-
-	public void setStartList(int startList) {
-		this.startList = startList;
-	}
-
 	public int getEndPage() {
 		return endPage;
 	}
 
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
+	}
+
+	public int getStartList() {
+		return startList;
+	}
+
+	public void setStartList(int startList) {
+		this.startList = startList;
 	}
 
 	public boolean isPrev() {
@@ -104,43 +114,37 @@ public class Pagination {
 	public void setNext(boolean next) {
 		this.next = next;
 	}
-
-	public int getRangeSize() {
-		return rangeSize;
-	}
-
-	public int getListCnt() {
-		return listCnt;
-	}
 	
-	public void pageInfo(int page, int range, int listCnt){
+	
+	public void pageInfo(int page, int range, int listCnt) {
 		
-		//current location
 		this.page = page;
 		this.range = range;
 		this.listCnt = listCnt;
 		
-		//total page cnt
-		this.pageCnt = (int) Math.ceil((float)listCnt/listSize);
+		//총 페이지 범위의 갯수
+		this.pageCnt = (int)Math.ceil((float)listCnt/listSize);
 		
-		//start page
+		//시작번호
 		this.startPage = (range - 1) * rangeSize + 1;
 		
-		//end page
+		//끝번호
 		this.endPage = range * rangeSize;
 		
-		//board start count
+		//Mapper에 사용할 Limit 시작번호
 		this.startList = (page - 1) * listSize;
 		
-		//prev state
+		//이전버튼 
 		this.prev = range == 1 ? false : true;
 		
-		//next state
+		//다음버튼
 		this.next = endPage > pageCnt ? false : true;
 		if(endPage >= pageCnt) {
 			this.endPage = this.pageCnt;
 			this.next = false;
 		}
 	}
+	
+	
 	
 }

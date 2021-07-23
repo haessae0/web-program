@@ -15,10 +15,14 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDAO userDAO;
-
+	
 	@Override
-	public String selectPwd(String id) {
-		return userDAO.selectPwd(id);
+	public Boolean selectPwd(String id, String password) {
+		if(password.equals(userDAO.selectPwd(id))){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -28,44 +32,44 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Boolean loginProcess(HttpServletRequest request, UserVO user) {
-		if (user.getPwd().equals(selectPwd(user.getUserId()))) {
+		
+		if(selectPwd(user.getUserId(), user.getPwd())) {
 			setSession(request, user);
 			return true;
 		}
 		return false;
 	}
-
+	
+	//세션 설정
 	public void setSession(HttpServletRequest request, UserVO user) {
-		// 해당 사용자의 로그인 정보를 가져온다.
+		
 		UserVO userInfo = selectUserInfo(user.getUserId());
-
-		if (userInfo != null) {
-
-			// 세션을 가져온다. (가져올 세션이 없다면 생성한다.)
+		if(userInfo != null) {
+			
 			HttpSession httpSession = request.getSession(true);
-
-			// "USER"로 sessionVO를 세션에 바인딩한다.
+			
 			httpSession.setAttribute("USER", userInfo);
 		}
 	}
-
-	@Override
-	public void updateUser(UserVO user) {
-		if (user.getPwd().equals("")) {
-			user.setPwd(selectPwd(user.getUserId()));
-		}
-
-		userDAO.updateUser(user);
-	}
-
+	
 	@Override
 	public void insertUser(UserVO user) {
 		userDAO.insertUser(user);
 	}
 
 	@Override
+	public void updateUser(UserVO user) {
+		if(user.getPwd().isEmpty()) {
+			user.setPwd(userDAO.selectPwd(user.getUserId()));
+		}
+		userDAO.updateUser(user);
+	}
+
+	@Override
 	public void deleteUser(HttpSession session) {
 		UserVO user = (UserVO) session.getAttribute("USER");
 		userDAO.deleteUser(user.getUserId());
+		
 	}
+	
 }

@@ -22,13 +22,11 @@ public class DeptServiceImpl implements DeptService{
 	@Override
 	public void insertDept(DeptVO dept) {
 		deptDAO.insertDept(dept);
-		
 	}
 
 	@Override
 	public void deleteDept(String deptCd) {
 		deptDAO.deleteDept(deptCd);
-		
 	}
 
 }

@@ -19,7 +19,7 @@ public class MainController {
 	private UserService userService;
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String mainPage(HttpServletRequest request, @ModelAttribute UserVO user) {
+	public String mainPage(HttpServletRequest request ,@ModelAttribute UserVO user) {
 		
 		if(userService.loginProcess(request, user)){
 			return "main.jsp";
@@ -33,19 +33,25 @@ public class MainController {
 		return "login.jsp";
 	}
 	
+	@RequestMapping("/userInfo.do")
+	public String userInfo() {
+		return "user/userInfo.jsp";
+	}
+	
+	
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
+		
 		session.removeAttribute("USER");
 		return "login.jsp";
 	}
 	
 	@RequestMapping("/mainPage.do")
-	public String mainPage(HttpServletRequest request, HttpSession session) {
+	public String mainPage(HttpSession session) {
 		
-		if (session.getAttribute("USER") == null) {
+		if(session.getAttribute("USER") == null) {
 			return "redirect:/loginPage.do";
 		}
 		return "main.jsp";
 	}
-
 }

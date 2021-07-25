@@ -1,7 +1,6 @@
 package du.board.service.impl;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
@@ -109,8 +108,9 @@ public class BoardServiceImpl implements BoardService {
 	private void uploadBoardAttFileVO(BoardAttFileVO attFileVO) throws Exception{
 		// 1. filePath
 		String fileStorePath = propertyService.getString("fileStorePath");
-		String dailyPath = LocalDate.now().toString();
-		String filePath = fileStorePath + dailyPath;
+//		String dailyPath = LocalDate.now().toString();
+//		String filePath = fileStorePath + dailyPath;
+		String filePath = fileStorePath ;
 		
 		File directory = new File(filePath);
 		if(!directory.exists()) {

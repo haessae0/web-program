@@ -34,9 +34,10 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 			<th>내용</th>
 			<td colspan="3" style="width: 90%; height: 100px;"><c:out
 					value="${board.content }"></c:out><img style="width: 500px;"
-				id="preview-image"
 				src="/Users/haessae0/Documents/dev/eGov/Temp/${board.attFilename}"></td>
 		</tr>
+		
+		
 		<tr>
 			<th>첨부파일</th>
 			<td colspan="3"><a href="#"

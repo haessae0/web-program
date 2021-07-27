@@ -8,9 +8,9 @@ public class UserVO {
 	
 	private String name;
 	
-	private String deptCd;
+	private String areaCd;
 	
-	private String deptNm;
+	private String areaNm;
 	
 	private String job;
 	
@@ -42,20 +42,20 @@ public class UserVO {
 		this.name = name;
 	}
 
-	public String getDeptCd() {
-		return deptCd;
+	public String getareaCd() {
+		return areaCd;
 	}
 
-	public void setDeptCd(String deptCd) {
-		this.deptCd = deptCd;
+	public void setareaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
 
-	public String getDeptNm() {
-		return deptNm;
+	public String getareaNm() {
+		return areaNm;
 	}
 
-	public void setDeptNm(String deptNm) {
-		this.deptNm = deptNm;
+	public void setareaNm(String areaNm) {
+		this.areaNm = areaNm;
 	}
 
 	public String getJob() {

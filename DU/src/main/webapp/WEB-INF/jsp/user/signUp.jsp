@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>보노 중고 마켓</title>
+<title>보노 마켓</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -72,10 +72,10 @@
 								</div>
 								<div class="mb-3">
 									<label for="exampleFormControlSelect1">사는 지역</label> <select
-										name="deptCd" class="form-control" required>
-										<c:forEach items="${dept}" var="item">
-											<option value="${item.deptCd}"><c:out
-													value="${item.deptNm}" /></option>
+										name="areaCd" class="form-control" required>
+										<c:forEach items="${area}" var="item">
+											<option value="${item.areaCd}"><c:out
+													value="${item.areaNm}" /></option>
 										</c:forEach>
 									</select>
 								</div>
@@ -94,7 +94,7 @@
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.html">아이디/비밀번호 찾기</a>
+								<a class="small" onclick="window.location.href='findIdForm.do'">아이디 찾기</a>
 							</div>
 							<div class="text-center">
 								<a class="small" onclick="window.location.href='loginPage.do'">이미 회원이시라면 로그인 하러 가기!</a>

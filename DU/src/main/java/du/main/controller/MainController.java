@@ -54,4 +54,10 @@ public class MainController {
 		}
 		return "main.jsp";
 	}
+	
+	@RequestMapping("/findIdForm.do")
+	public String findId() throws Exception{
+		return "/user/findIdForm.jsp";
+	}
+
 }

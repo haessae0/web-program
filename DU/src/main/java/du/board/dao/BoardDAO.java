@@ -25,4 +25,8 @@ public interface BoardDAO {
 	public BoardAttFileVO selectBoardAttFile(BoardAttFileVO criteria);
 	
 	public void deleteBoardAttFile(BoardAttFileVO criteria);
+	
+	public List<BoardVO> selectBoardAreaList(HashMap<String, Object> map);
+	
+	public int selectBoardAreaListCnt(HashMap<String, Object> map);
 }

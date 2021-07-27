@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Area">
+	<resultMap type="AreaMap" id="AreaVO">
+		<id property="areaCd"		column="area_cd"/>
+		<result property="areaNm"	column="area_nm"/>
+	</resultMap>
+	
+	<select id="selectAreaList" resultMap="AreaVO">
+		<![CDATA[
+			SELECT
+				area_cd, area_nm
+			FROM
+				tb_area_cd 
+		]]>
+	</select>
+	
+	<insert id="insertArea" parameterType="AreaMap">
+		<![CDATA[
+			INSERT INTO tb_area_cd
+				(area_cd, area_nm)
+			VALUES
+				(#{areaCd}, #{areaNm})
+		]]>
+	</insert>
+	
+	<delete id="deleteArea" parameterType="String">
+		<![CDATA[
+			DELETE FROM tb_area_cd
+			WHERE
+				area_cd = #{areaCd}
+			
+		]]>
+	</delete>
+</mapper>

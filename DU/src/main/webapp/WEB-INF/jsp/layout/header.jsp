@@ -16,7 +16,7 @@
 			onclick="window.location.href='${pageContext.request.contextPath }/mainPage.do'">
 	</div>
 	<ul class="infoUl">
-		<li><a href="deptPage.do">부서정보</a></li>
+		<li><a href="areaPage.do">부서정보</a></li>
 	</ul>
 	<div class="userInfoDiv">
 		[<c:out value="${USER.name}" />]님 반갑습니다~ ^_^

@@ -27,6 +27,16 @@ public class BoardVO {
 	private String attFilename;
 	
 	private String handleType;
+	
+	private String areaNm;
+
+	public String getAreaNm() {
+		return areaNm;
+	}
+
+	public void setAreaNm(String areaNm) {
+		this.areaNm = areaNm;
+	}
 
 	public long getIdx() {
 		return idx;

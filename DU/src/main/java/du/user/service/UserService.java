@@ -1,6 +1,7 @@
 package du.user.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import du.user.domain.UserVO;
@@ -18,4 +19,6 @@ public interface UserService {
 	public void updateUser(UserVO user);
 	
 	public void deleteUser(HttpSession session);
+	
+	public String findId(HttpServletResponse response, String email) throws Exception;
 }

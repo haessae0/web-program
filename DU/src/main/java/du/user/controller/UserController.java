@@ -2,15 +2,19 @@ package du.user.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import du.dept.domain.DeptVO;
-import du.dept.service.DeptService;
+import du.area.domain.AreaVO;
+import du.area.service.AreaService;
 import du.user.domain.UserVO;
 import du.user.service.UserService;
 
@@ -19,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private DeptService deptService;
+	private AreaService areaService;
 	
 	@RequestMapping("/userInfoConfirmPage.do")
 	public String userInfoConfirmPage() {
@@ -30,8 +34,8 @@ public class UserController {
 	public ModelAndView userInfoConfirm(UserVO user) {
 		if(userService.selectPwd(user.getUserId(), user.getPwd())) {
 			ModelAndView mav = new ModelAndView("user/userInfo.jsp");
-			List<DeptVO> dept = deptService.selectDeptList();
-			mav.addObject("dept", dept);
+			List<AreaVO> area = areaService.selectAreaList();
+			mav.addObject("area", area);
 			return mav;
 		} else {
 			ModelAndView mav = new ModelAndView("main.jsp");
@@ -42,8 +46,8 @@ public class UserController {
 	@RequestMapping("/signUpPage.do")
 	public ModelAndView signUpPage() {
 		ModelAndView mav = new ModelAndView("user/signUp.jsp");
-		List<DeptVO> dept = deptService.selectDeptList();
-		mav.addObject("dept", dept);
+		List<AreaVO> area = areaService.selectAreaList();
+		mav.addObject("area", area);
 		return mav;
 	}
 	
@@ -64,5 +68,11 @@ public class UserController {
 //		userService.deleteUser(userId);
 		userService.deleteUser(session);
 		return "redirect:/loginPage.do";
+	}
+	
+	@RequestMapping(value="/findId.do", method = RequestMethod.POST)
+	public String finId(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception{
+		md.addAttribute("id", userService.findId(response, email));
+		return "user/findId.jsp";
 	}
 }

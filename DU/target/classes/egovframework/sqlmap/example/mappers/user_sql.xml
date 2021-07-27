@@ -6,8 +6,8 @@
 		<id property="userId"			column="user_id"/>
 		<result property="pwd"			column="pwd"/>
 		<result property="name"			column="name"/>
-		<result property="deptCd"		column="dept_cd"/>
-		<result property="deptNm"		column="dept_nm"/>
+		<result property="areaCd"		column="area_cd"/>
+		<result property="areaNm"		column="area_nm"/>
 		<result property="job"			column="job"/>
 		<result property="phone"		column="phone"/>
 		<result property="email"		column="email"/>
@@ -27,20 +27,31 @@
 	<select id="selectUserInfo" parameterType="String" resultMap="UserVO">
 		<![CDATA[ 
 			SELECT 
-				A.user_id, A.name, B.dept_nm, A.job, A.dept_cd, A.phone, A.email 
+				A.user_id, A.name, B.area_nm, A.job, A.area_cd, A.phone, A.email 
 			FROM 
-				TB_USER A INNER JOIN TB_DEPT_CD B ON A.dept_cd = B.dept_cd
+				TB_USER A INNER JOIN TB_area_CD B ON A.area_cd = B.area_cd
 			WHERE
 				user_id = #{userId}
+		]]>
+	</select>
+	
+	<select id="findId" parameterType="String" resultType="String">
+	<![CDATA[ 
+		SELECT
+			user_id 
+		FROM 
+			tb_user 
+		WHERE 
+			email = #{email}
 		]]>
 	</select>
 	
 	<insert id="insertUser" parameterType="UserMap">
 		<![CDATA[
 			INSERT INTO tb_user
-				(user_id, pwd, name, dept_cd, job, phone, email)
+				(user_id, pwd, name, area_cd, job, phone, email)
 			VALUES
-				(#{userId}, #{pwd}, #{name}, #{deptCd}, #{job}, #{phone}, #{email})
+				(#{userId}, #{pwd}, #{name}, #{areaCd}, #{job}, #{phone}, #{email})
 		]]>
 	</insert>
 	
@@ -50,7 +61,7 @@
 			SET
 				pwd = #{pwd},
 				name = #{name},
-				dept_cd = #{deptCd},
+				area_cd = #{areaCd},
 				job = #{job},
 				phone = #{phone},
 				email = #{email}

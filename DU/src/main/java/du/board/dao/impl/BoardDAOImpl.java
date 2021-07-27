@@ -45,7 +45,7 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO {
 
 	@Override
 	public void insertBoardAttFile(BoardAttFileVO attFileVO) throws Exception {
-		
+
 		insert("Board.insertBoardAttFile", attFileVO);
 	}
 
@@ -58,5 +58,15 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO {
 	public void deleteBoardAttFile(BoardAttFileVO criteria) {
 		delete("Board.deleteBoardAttFile", criteria);
 	}
-	
+
+	@Override
+	public List<BoardVO> selectBoardAreaList(HashMap<String, Object> map) {
+		return selectList("Board.selectBoardAreaList", map);
+	}
+
+	@Override
+	public int selectBoardAreaListCnt(HashMap<String, Object> map) {
+		return selectOne("Board.selectBoardListCnt", map);
+	}
+
 }

@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>보노 중고 마켓</title>
+<title>보노 마켓</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -49,7 +49,7 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">보노 중고 마켓 로그인</h1>
+										<h1 class="h4 text-gray-900 mb-4">보노 마켓 로그인</h1>
 									</div>
 									<form action="login.do" method="post">
 										<div class="form-group">
@@ -74,9 +74,7 @@
 										</div>
 										<hr>
 										<div class="text-center">
-											<a class="small" href="forgot-password.html">아이디/비밀번호 찾기</a>
-										</div>
-										<div class="text-center">
+											<a class="small" onclick="window.location.href='findIdForm.do'">아이디 찾기</a>
 											<a class="small"
 												onclick="window.location.href='signUpPage.do'">회원가입</a>
 										</div>

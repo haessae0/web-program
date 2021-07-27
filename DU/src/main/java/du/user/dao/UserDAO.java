@@ -12,4 +12,7 @@ public interface UserDAO {
 	public void updateUser(UserVO user);
 	
 	public void deleteUser(String userId);
+	
+	public String findId(String email) throws Exception;
+
 }

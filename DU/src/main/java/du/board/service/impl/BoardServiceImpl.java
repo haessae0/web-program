@@ -174,4 +174,32 @@ public class BoardServiceImpl implements BoardService {
 			insertBoardAttFile(boardVO);
 		}
 	}
+	
+	@Override
+	public List<BoardVO> selectBoardAreaList(Pagination pagination, HttpSession session, String title) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		UserVO user = (UserVO) session.getAttribute("USER");
+		
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
+		map.put("title", title);
+		map.put("area", user.getareaCd());
+		
+		return boardDAO.selectBoardAreaList(map);
+	}
+	
+	@Override
+	public int selectBoardAreaListCnt(HttpSession session, String title ) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		UserVO user = (UserVO) session.getAttribute("USER");
+		
+		map.put("area", user.getareaCd());
+		map.put("title", title);
+		
+		return boardDAO.selectBoardAreaListCnt(map);
+	}
 }

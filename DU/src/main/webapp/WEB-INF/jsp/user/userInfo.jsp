@@ -42,9 +42,9 @@
 			<tr>
 				<th>부서</th>
 				<td>
-					<select name="deptCd">
-						<c:forEach items="${dept}" var="item">
-							<option value="${item.deptCd}"><c:out value="${item.deptNm}"/></option>
+					<select name="areaCd">
+						<c:forEach items="${area}" var="item">
+							<option value="${item.areaCd}"><c:out value="${item.areaNm}"/></option>
 						</c:forEach>
 					</select>
 				</td>

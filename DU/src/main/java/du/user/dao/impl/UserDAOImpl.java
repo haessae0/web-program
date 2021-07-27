@@ -34,4 +34,9 @@ public class UserDAOImpl extends EgovAbstractMapper implements UserDAO {
 		delete("User.deleteUser", userId);
 		
 	}
+	
+	public String findId(String email) throws Exception{
+		return selectOne("User.findId", email);
+	}
+	
 }

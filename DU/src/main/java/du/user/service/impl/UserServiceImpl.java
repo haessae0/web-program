@@ -1,6 +1,9 @@
 package du.user.service.impl;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +73,24 @@ public class UserServiceImpl implements UserService {
 		UserVO user = (UserVO) session.getAttribute("USER");
 		userDAO.deleteUser(user.getUserId());
 		
+	}
+
+	@Override
+	public String findId(HttpServletResponse response, String email) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String id = userDAO.findId(email);
+		
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return id;
+		}
 	}
 	
 }

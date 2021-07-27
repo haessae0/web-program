@@ -27,6 +27,10 @@ public interface BoardService {
 	public void deleteBoardAttFile(BoardAttFileVO criteria) throws Exception;
 
 	public List<BoardVO> selectBoardAreaList(Pagination pagination, HttpSession session, String title);
-	
+
 	public int selectBoardAreaListCnt(HttpSession session, String title);
+
+	public List<BoardVO> selectBoardMyList(Pagination pagination, HttpSession session, String title);
+
+	public int selectBoardMyListCnt(HttpSession session, String title);
 }

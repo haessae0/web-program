@@ -85,7 +85,7 @@
 				B.idx = #{idx}
 		]]>
 	</select>
-	
+
 	<select id="selectBoardAreaList" parameterType="hashmap"
 		resultMap="BoardVO">
 		<![CDATA[
@@ -95,13 +95,14 @@
 				tb_board B INNER JOIN tb_user U ON B.writer_id = U.user_id INNER JOIN tb_area_cd A ON U.area_cd = A.area_cd
 		]]>
 		<where>
-			<if test="title != ''">
-				B.title LIKE CONCAT('%', #{title}, '%')
+			<if test="title!=null and !title.equals('')">
+				AND B.title LIKE CONCAT('%', #{title}, '%')
 			</if>
-		</where>
-		<where>
-			<if test="area != ''">
-				#{area} = U.area_cd
+			<if test="area!=null and !area.equals('')">
+				AND #{area} = U.area_cd
+			</if>
+			<if test="my!=null and !my.equals('')">
+				AND #{my} = U.user_id
 			</if>
 		</where>
 		<![CDATA[
@@ -109,7 +110,7 @@
 			LIMIT #{startList}, #{listSize}
 		]]>
 	</select>
-	
+
 	<select id="selectBoardAreaListCnt" parameterType="hashmap"
 		resultType="int">
 		<![CDATA[
@@ -119,16 +120,18 @@
 				tb_board B INNER JOIN tb_user U ON B.writer_id = U.user_id
 		]]>
 		<where>
-			<if test="value != ''">
-				B.title LIKE CONCAT('%', #{title}, '%')
+			<if test="title!=null and !title.equals('')">
+				AND B.title LIKE CONCAT('%', #{title}, '%')
 			</if>
-		</where>
-		<where>
-			<if test="area != ''">
-				#{area} = U.area_cd
+			<if test="area!=null and !area.equals('')">
+				AND #{area} = U.area_cd
+			</if>
+			<if test="my!=null and !my.equals('')">
+				AND #{my} = U.user_id
 			</if>
 		</where>
 	</select>
+
 
 	<insert id="insertBoard" parameterType="boardMap">
 		<![CDATA[

@@ -202,4 +202,32 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.selectBoardAreaListCnt(map);
 	}
+	
+	@Override
+	public List<BoardVO> selectBoardMyList(Pagination pagination, HttpSession session, String title) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		UserVO user = (UserVO) session.getAttribute("USER");
+		
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
+		map.put("title", title);
+		map.put("my", user.getUserId());
+		
+		return boardDAO.selectBoardAreaList(map);
+	}
+	
+	@Override
+	public int selectBoardMyListCnt(HttpSession session, String title ) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		UserVO user = (UserVO) session.getAttribute("USER");
+		
+		map.put("my", user.getUserId());
+		map.put("title", title);
+		
+		return boardDAO.selectBoardAreaListCnt(map);
+	}
 }

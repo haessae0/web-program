@@ -72,6 +72,26 @@ public class BoardController {
 
 		return mav;
 	}
+	
+	@RequestMapping("/boardMyPage.do")
+	public ModelAndView boardMyPage(@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range, HttpSession session,
+			@RequestParam(required = false, defaultValue = "") String title) {
+		ModelAndView mav = new ModelAndView("board/boardMyPage.jsp");
+
+		int listCnt = boardService.selectBoardMyListCnt(session, title);
+
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+		mav.addObject("pagination", pagination);
+
+		List<BoardVO> AreaList = boardService.selectBoardMyList(pagination, session, title);
+		mav.addObject("boardList", AreaList);
+
+		mav.addObject("title", title);
+
+		return mav;
+	}
 
 	@RequestMapping("/boardWritePage.do")
 	public String boardWritePage() {

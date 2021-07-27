@@ -17,6 +17,7 @@
 		
 	<img src="images/notice-board.png" style="width: 500px; height: 500px;" onclick="window.location.href='boardListPage.do'"/>
 	<button type="button" onclick="window.location.href='boardAreaPage.do'">게시</button>
-	<button type="button" onclick="window.location.href='boardAreaPage.do'">작성한 글 보기</button>
+	<button type="button" onclick="window.location.href='boardMyPage.do'">작성한 글 보기</button>
+	<button type="button" onclick="window.location.href='boardMyPage.do'">오늘 작성 된 글 보기</button>
 </body>
 </html>

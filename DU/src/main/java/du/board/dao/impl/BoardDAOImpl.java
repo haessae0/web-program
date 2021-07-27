@@ -66,7 +66,7 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO {
 
 	@Override
 	public int selectBoardAreaListCnt(HashMap<String, Object> map) {
-		return selectOne("Board.selectBoardListCnt", map);
+		return selectOne("Board.selectBoardAreaListCnt", map);
 	}
-
+	
 }

@@ -29,4 +29,5 @@ public interface BoardDAO {
 	public List<BoardVO> selectBoardAreaList(HashMap<String, Object> map);
 	
 	public int selectBoardAreaListCnt(HashMap<String, Object> map);
+	
 }

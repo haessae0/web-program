@@ -57,7 +57,7 @@ public class BoardController {
 	public ModelAndView boardAreaPage(@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range, HttpSession session,
 			@RequestParam(required = false, defaultValue = "") String title) {
-		ModelAndView mav = new ModelAndView("board/boardArea.jsp");
+		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
 		int listCnt = boardService.selectBoardAreaListCnt(session, title);
 
@@ -72,12 +72,12 @@ public class BoardController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping("/boardMyPage.do")
 	public ModelAndView boardMyPage(@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range, HttpSession session,
 			@RequestParam(required = false, defaultValue = "") String title) {
-		ModelAndView mav = new ModelAndView("board/boardMyPage.jsp");
+		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
 		int listCnt = boardService.selectBoardMyListCnt(session, title);
 
@@ -86,6 +86,26 @@ public class BoardController {
 		mav.addObject("pagination", pagination);
 
 		List<BoardVO> AreaList = boardService.selectBoardMyList(pagination, session, title);
+		mav.addObject("boardList", AreaList);
+
+		mav.addObject("title", title);
+
+		return mav;
+	}
+
+	@RequestMapping("/boardTodayPage.do")
+	public ModelAndView boardTodayPage(@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "") String title) {
+		ModelAndView mav = new ModelAndView("board/boardList.jsp");
+
+		int listCnt = boardService.selectBoardTodayListCnt(title);
+
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+		mav.addObject("pagination", pagination);
+
+		List<BoardVO> AreaList = boardService.selectBoardTodayList(pagination, title);
 		mav.addObject("boardList", AreaList);
 
 		mav.addObject("title", title);

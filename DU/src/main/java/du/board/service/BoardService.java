@@ -33,4 +33,8 @@ public interface BoardService {
 	public List<BoardVO> selectBoardMyList(Pagination pagination, HttpSession session, String title);
 
 	public int selectBoardMyListCnt(HttpSession session, String title);
+
+	public List<BoardVO> selectBoardTodayList(Pagination pagination, String title);
+
+	public int selectBoardTodayListCnt(String title);
 }

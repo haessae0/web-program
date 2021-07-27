@@ -104,6 +104,9 @@
 			<if test="my!=null and !my.equals('')">
 				AND #{my} = U.user_id
 			</if>
+			<if test="today!=null and !today.equals('')">
+				AND DATE_FORMAT(B.regist_date, "%Y-%m-%d") = CURDATE()
+			</if>
 		</where>
 		<![CDATA[
 			ORDER BY B.idx DESC
@@ -129,9 +132,11 @@
 			<if test="my!=null and !my.equals('')">
 				AND #{my} = U.user_id
 			</if>
+			<if test="today!=null and !today.equals('')">
+				AND DATE_FORMAT(B.regist_date, "%Y-%m-%d") = CURDATE()
+			</if>
 		</where>
 	</select>
-
 
 	<insert id="insertBoard" parameterType="boardMap">
 		<![CDATA[

@@ -59,7 +59,9 @@ public class UserController {
 	
 	@RequestMapping("/userModify.do")
 	public String userModify(UserVO user) {
+		System.out.println("1111");
 		userService.updateUser(user);
+		System.out.println("1111");
 		return "redirect:/logout.do";
 	}
 	

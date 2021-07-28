@@ -184,12 +184,9 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+					<h1 class="h3 mb-2 text-gray-800">판매 게시판</h1>
 					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
+						상품 판매를 위한 게시물 입니다.
 					</p>
 
 					<!-- DataTales Example -->
@@ -216,7 +213,7 @@
 												<td><c:out
 														value="${status.count + pagination.startList}" /></td>
 												<td><c:out value="${item.title}" /></td>
-												<td><c:out value="${item.writerName}" /></td>
+												<td><c:out value="${item.writerName}" />[<c:out value="${item.writerId}" />]</td>
 												<td><c:out value="${item.areaNm}" /></td>
 												<td><c:out value="${item.registDate}" /></td>
 											</tr>
@@ -259,7 +256,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2020</span>
+						<span>Copyright &copy; Bono Market 2021</span>
 					</div>
 				</div>
 			</footer>

@@ -14,5 +14,7 @@ public interface UserDAO {
 	public void deleteUser(String userId);
 	
 	public String findId(String email) throws Exception;
+	
+	public int updatePw(UserVO user) throws Exception;
 
 }

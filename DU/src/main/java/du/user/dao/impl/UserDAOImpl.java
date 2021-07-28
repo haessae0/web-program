@@ -1,6 +1,7 @@
 package du.user.dao.impl;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import du.user.dao.UserDAO;
 import du.user.domain.UserVO;
@@ -37,6 +38,11 @@ public class UserDAOImpl extends EgovAbstractMapper implements UserDAO {
 	
 	public String findId(String email) throws Exception{
 		return selectOne("User.findId", email);
+	}
+	
+	@Transactional
+	public int updatePw(UserVO user) throws Exception{
+		return update("User.updatePw", user);
 	}
 	
 }

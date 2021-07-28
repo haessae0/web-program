@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
 
@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>보노 마켓</title>
+<title>보노 마켓 - 비밀번호 찾기</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -27,8 +27,6 @@
 <link
 	href="${pageContext.request.contextPath}/js/css/sb-admin-2.min.css"
 	rel="stylesheet">
-
-
 
 </head>
 
@@ -45,42 +43,31 @@
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
-							<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+							<div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">보노 마켓 로그인</h1>
+										<h1 class="h4 text-gray-900 mb-2">비밀번호 찾기</h1>
+										<p class="mb-4">비밀번호를 찾기 위해 본인이 가입 시 사용한 이메일과 아이디를 입력해주시기 바랍니다.</p>
 									</div>
-									<form action="login.do" method="post">
-										<div class="form-group">
-											<input type="text" class="form-control form-control-user"
-												id="user_id" name="userId" placeholder="ID를 입력해주세요">
-										</div>
-										<div class="form-group">
-											<input type="password" class="form-control form-control-user"
-												id="user_pw" name="pwd" placeholder="비밀번호를 입력해주세요">
-										</div>
-										<div class="form-group">
-											<div class="custom-control custom-checkbox small">
-												<input type="checkbox" class="custom-control-input"
-													id="customCheck"> <label
-													class="custom-control-label" for="customCheck">Remember
-													Me</label>
-											</div>
-										</div>
-										<div class="text-center">
-											<button type="submit"
-												class="btn btn-primary btn-user btn-block">로그인 하기</button>
-										</div>
-										<hr>
-										<div class="text-center">
-											<a class="small" onclick="window.location.href='findIdForm.do'">아이디 찾기</a>
-											<a class="small" onclick="window.location.href='findPwForm.do'">qkakf 찾기</a>
-											<a class="small"
-												onclick="window.location.href='signUpPage.do'">회원가입</a>
-										</div>
-									</form>
+									<div class="text-center">
+										<h5>${ User.pwd}</h5>
+									</div>
 
+								</div>
+								<button type="button"
+									onclick="window.location.href='loginPage.do'"
+									class="btn btn-primary btn-user btn-block">로그인 하러 가기</button>
+
+									<hr>
+									<div class="text-center">
+										<a class="small"
+											onclick="window.location.href='signUpPage.do'">회원가입</a>
+									</div>
+									<div class="text-center">
+										<a class="small" onclick="window.location.href='loginPage.do'">이미
+											회원이시라면 로그인 하러 가기!</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -90,8 +77,6 @@
 			</div>
 
 		</div>
-
-	</div>
 
 	<!-- Bootstrap core JavaScript-->
 	<script

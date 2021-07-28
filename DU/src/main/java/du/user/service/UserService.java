@@ -21,4 +21,8 @@ public interface UserService {
 	public void deleteUser(HttpSession session);
 	
 	public String findId(HttpServletResponse response, String email) throws Exception;
+	
+//	public void send_mail(UserVO user, String div) throws Exception;
+	
+	public void findPw(HttpServletResponse response, UserVO user) throws Exception;
 }

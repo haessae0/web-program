@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,9 +60,7 @@ public class UserController {
 	
 	@RequestMapping("/userModify.do")
 	public String userModify(UserVO user) {
-		System.out.println("1111");
 		userService.updateUser(user);
-		System.out.println("1111");
 		return "redirect:/logout.do";
 	}
 	
@@ -76,5 +75,10 @@ public class UserController {
 	public String finId(HttpServletResponse response, @RequestParam("email") String email, Model md) throws Exception{
 		md.addAttribute("id", userService.findId(response, email));
 		return "user/findId.jsp";
+	}
+	
+	@RequestMapping(value = "/findPw.do", method = RequestMethod.POST)
+	public void findPw(@ModelAttribute UserVO user, HttpServletResponse response) throws Exception{
+		userService.findPw(response, user);
 	}
 }

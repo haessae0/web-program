@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -93,51 +94,51 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-//	// 이메일 발송
-//		@Override
-//		public void send_mail(UserVO user, String div) throws Exception {
-//			// Mail Server 설정
-//			String charSet = "utf-8";
-//			String hostSMTP = "smtp.gmail.com"; //네이버 이용시 smtp.naver.com
-//			String hostSMTPid = "haessae0";
-//			String hostSMTPpwd = "!aa01071263642";
-//
-//			// 보내는 사람 EMail, 제목, 내용
-//			String fromEmail = "haessae0@gmail.com";
-//			String fromName = "보노 마켓 비밀번호 변경";
-//			String subject = "asd";
-//			String msg = "";
-//
-//			if(div.equals("findpw")) {
-//				subject = "보노 마켓 임시 비밀번호 입니다.";
-//				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-//				msg += "<h3 style='color: blue;'>";
-//				msg += user.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
-//				msg += "<p>임시 비밀번호 : ";
-//				msg += user.getPwd() + "</p></div>";
-//			}
-//
-//			// 받는 사람 E-Mail 주소
-//			String mail = user.getEmail();
-//			try {
-//				HtmlEmail email = new HtmlEmail();
-//				email.setDebug(true);
-//				email.setCharset(charSet);
-//				email.setSSL(true);
-//				email.setHostName(hostSMTP);
-//				email.setSmtpPort(465); //네이버 이용시 587
-//
-//				email.setAuthentication(hostSMTPid, hostSMTPpwd);
-//				email.setTLS(true);
-//				email.addTo(mail, charSet);
-//				email.setFrom(fromEmail, fromName, charSet);
-//				email.setSubject(subject);
-//				email.setHtmlMsg(msg);
-//				email.send();
-//			} catch (Exception e) {
-//				System.out.println("메일발송 실패 : " + e);
-//			}
-//		}
+	// 이메일 발송
+		@Override
+		public void send_mail(UserVO user, String div) throws Exception {
+			// Mail Server 설정
+			String charSet = "utf-8";
+			String hostSMTP = "smtp.gmail.com"; //네이버 이용시 smtp.naver.com
+			String hostSMTPid = "haessae0";
+			String hostSMTPpwd = "!aa01071263642";
+
+			// 보내는 사람 EMail, 제목, 내용
+			String fromEmail = "haessae0@gmail.com";
+			String fromName = "보노 마켓 비밀번호 변경";
+			String subject = "비밀번호 변경 이메일 입니다.";
+			String msg = user.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요. 임시 비밀번호 : " + user.getPwd();
+
+			if(div.equals("findpw")) {
+				subject = "보노 마켓 임시 비밀번호 입니다.";
+				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+				msg += "<h3 style='color: blue;'>";
+				msg += user.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+				msg += "";
+				msg += user.getPwd() + "</p></div>";
+			}
+
+			// 받는 사람 E-Mail 주소
+			String mail = user.getEmail();
+			try {
+				HtmlEmail email = new HtmlEmail();
+				email.setDebug(true);
+				email.setCharset(charSet);
+				email.setSSL(true);
+				email.setHostName(hostSMTP);
+				email.setSmtpPort(465); //네이버 이용시 587
+
+				email.setAuthentication(hostSMTPid, hostSMTPpwd);
+				email.setTLS(true);
+				email.addTo(mail, charSet);
+				email.setFrom(fromEmail, fromName, charSet);
+				email.setSubject(subject);
+				email.setHtmlMsg(msg);
+				email.send();
+			} catch (Exception e) {
+				System.out.println("메일발송 실패 : " + e);
+			}
+		}
 
 	@Override
 	public void findPw(HttpServletResponse response, UserVO user) throws Exception {
@@ -154,11 +155,8 @@ public class UserServiceImpl implements UserService {
 			// 비밀번호 변경
 			userDAO.updatePw(user);
 			// 비밀번호 변경 메일 발송
-//				send_mail(user, "findPw");
+			send_mail(user, "findPw");
 
-			out.print(user.getPwd());
-			out.close();
 		}
 	}
-
 }

@@ -81,4 +81,5 @@ public class UserController {
 	public void findPw(@ModelAttribute UserVO user, HttpServletResponse response) throws Exception{
 		userService.findPw(response, user);
 	}
+	
 }

@@ -64,5 +64,7 @@ public class MainController {
 	public String findPwForm() throws Exception{
 		return "/user/findPwForm.jsp";
 	}
+	
+	
 
 }

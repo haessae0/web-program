@@ -159,13 +159,17 @@
 								<a class="dropdown-item"
 									onclick="window.location.href='userInfoConfirmPage.do'"> <i
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
 								</a>
+								<c:if test="${USER.userId == 'admin' }">
+									<a class="dropdown-item" href="#"> <i
+										class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+										Settings
+									</a>
+									<a class="dropdown-item" href="#"> <i
+										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+										Activity Log
+									</a>
+								</c:if>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item"
 									onclick="window.location.href='logout.do'" data-toggle="modal"
@@ -185,9 +189,7 @@
 
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">판매 게시판</h1>
-					<p class="mb-4">
-						상품 판매를 위한 게시물 입니다.
-					</p>
+					<p class="mb-4">상품 판매를 위한 게시물 입니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -213,7 +215,8 @@
 												<td><c:out
 														value="${status.count + pagination.startList}" /></td>
 												<td><c:out value="${item.title}" /></td>
-												<td><c:out value="${item.writerName}" />[<c:out value="${item.writerId}" />]</td>
+												<td><c:out value="${item.writerName}" />[<c:out
+														value="${item.writerId}" />]</td>
 												<td><c:out value="${item.areaNm}" /></td>
 												<td><c:out value="${item.registDate}" /></td>
 											</tr>

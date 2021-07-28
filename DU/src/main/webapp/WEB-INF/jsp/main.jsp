@@ -192,13 +192,17 @@
 								<a class="dropdown-item"
 									onclick="window.location.href='userInfoConfirmPage.do'"> <i
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
 								</a>
+								<c:if test="${USER.userId == 'admin' }">
+									<a class="dropdown-item" href="#"> <i
+										class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+										Settings
+									</a>
+									<a class="dropdown-item" href="#"> <i
+										class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+										Activity Log
+									</a>
+								</c:if>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item"
 									onclick="window.location.href='logout.do'" data-toggle="modal"
@@ -215,20 +219,18 @@
 
 				<div class="banner">
 					<ul>
-						<li><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340" height="210px"
+						<li><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340"
+							height="210px"
 							src="${pageContext.request.contextPath}/js/img/main_event_banner.png"
-							alt="..." onclick="window.location.href='boardWritePage.do'"
-							></li>
-						<li><img
-							class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340" height="210px"
+							alt="..." onclick="window.location.href='boardWritePage.do'"></li>
+						<li><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340"
+							height="210px"
 							src="${pageContext.request.contextPath}/js/img/main_event_banner.png"
-							alt="..."
-							></li>
-						<li><img
-							class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340" height="210px"
+							alt="..." onclick="window.location.href='boardWritePage.do'"></li>
+						<li><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" width="340"
+							height="210px"
 							src="${pageContext.request.contextPath}/js/img/main_event_banner.png"
-							alt="..."
-							></li>
+							alt="..." onclick="window.location.href='boardWritePage.do'"></li>
 					</ul>
 				</div>
 

@@ -74,8 +74,12 @@
 										</div>
 										<hr>
 										<div class="text-center">
-											<a class="small" onclick="window.location.href='findIdForm.do'">아이디 찾기</a>
-											<a class="small" onclick="window.location.href='findPwForm.do'">qkakf 찾기</a>
+											<a class="small"
+												onclick="window.location.href='findIdForm.do'">아이디 찾기</a> <a
+												class="small" onclick="window.location.href='findPwForm.do'">비밀번호
+												찾기</a>
+										</div>
+										<div class="text-center">
 											<a class="small"
 												onclick="window.location.href='signUpPage.do'">회원가입</a>
 										</div>

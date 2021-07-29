@@ -16,7 +16,6 @@ import du.board.dao.BoardDAO;
 import du.board.domain.BoardAttFileVO;
 import du.board.domain.BoardVO;
 import du.board.service.BoardService;
-import du.common.Pagination;
 import du.user.domain.UserVO;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
@@ -31,15 +30,9 @@ public class BoardServiceImpl implements BoardService {
 	private EgovPropertyService propertyService;
 	
 	@Override
-	public List<BoardVO> selectBoardList(Pagination pagination, String title) {
+	public List<BoardVO> selectBoardList(String title) {
 		
-		HashMap<String, Object> map = new HashMap<>();
-		
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
-		map.put("title", title);
-		
-		return boardDAO.selectBoardList(map);
+		return boardDAO.selectBoardList(title);
 	}
 
 	@Override
@@ -176,14 +169,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> selectBoardAreaList(Pagination pagination, HttpSession session, String title) {
+	public List<BoardVO> selectBoardAreaList(HttpSession session, String title) {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		UserVO user = (UserVO) session.getAttribute("USER");
 		
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
 		map.put("title", title);
 		map.put("area", user.getareaCd());
 		
@@ -204,14 +195,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> selectBoardMyList(Pagination pagination, HttpSession session, String title) {
+	public List<BoardVO> selectBoardMyList(HttpSession session, String title) {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		UserVO user = (UserVO) session.getAttribute("USER");
 		
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
 		map.put("title", title);
 		map.put("my", user.getUserId());
 		
@@ -232,14 +221,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> selectBoardTodayList(Pagination pagination,String title) {
+	public List<BoardVO> selectBoardTodayList(String title) {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		
-		
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
 		map.put("title", title);
 		map.put("today", "1");
 		
@@ -257,4 +243,16 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.selectBoardAreaListCnt(map);
 	}
+	
+	@Override
+	public List<BoardVO> selectBoardCountryList(String title, String areacd) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+	
+		map.put("title", title);
+		map.put("area", areacd);
+		
+		return boardDAO.selectBoardAreaList(map);
+	}
+	
 }

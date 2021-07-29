@@ -22,7 +22,6 @@ import du.board.domain.ReplyVO;
 import du.board.service.BoardService;
 import du.board.service.ReplyService;
 import du.common.DownloadView;
-import du.common.Pagination;
 
 @Controller
 public class BoardController {
@@ -39,13 +38,13 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "") String title) {
 		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
-		int listCnt = boardService.selectBoardListCnt(title);
+//		int listCnt = boardService.selectBoardListCnt(title);
+//
+//		Pagination pagination = new Pagination();
+//		pagination.pageInfo(page, range, listCnt);
+//		mav.addObject("pagination", pagination);
 
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		mav.addObject("pagination", pagination);
-
-		List<BoardVO> boardList = boardService.selectBoardList(pagination, title);
+		List<BoardVO> boardList = boardService.selectBoardList(title);
 		mav.addObject("boardList", boardList);
 
 		mav.addObject("title", title);
@@ -59,13 +58,28 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "") String title) {
 		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
-		int listCnt = boardService.selectBoardAreaListCnt(session, title);
+//		int listCnt = boardService.selectBoardAreaListCnt(session, title);
+//
+//		Pagination pagination = new Pagination();
+//		pagination.pageInfo(page, range, listCnt);
+//		mav.addObject("pagination", pagination);
 
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		mav.addObject("pagination", pagination);
+		List<BoardVO> AreaList = boardService.selectBoardAreaList(session, title);
+		mav.addObject("boardList", AreaList);
 
-		List<BoardVO> AreaList = boardService.selectBoardAreaList(pagination, session, title);
+		mav.addObject("title", title);
+
+		mav.addObject("url", "boardAreaPage.do");
+
+		return mav;
+	}
+
+	@RequestMapping("/boardCountryPage.do")
+	public ModelAndView boardCountryPage(@RequestParam(required = false, defaultValue = "") String title,
+			@RequestParam String areacd) {
+		ModelAndView mav = new ModelAndView("board/boardList.jsp");
+
+		List<BoardVO> AreaList = boardService.selectBoardCountryList(title, areacd);
 		mav.addObject("boardList", AreaList);
 
 		mav.addObject("title", title);
@@ -79,13 +93,13 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "") String title) {
 		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
-		int listCnt = boardService.selectBoardMyListCnt(session, title);
+//		int listCnt = boardService.selectBoardMyListCnt(session, title);
+//
+//		Pagination pagination = new Pagination();
+//		pagination.pageInfo(page, range, listCnt);
+//		mav.addObject("pagination", pagination);
 
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		mav.addObject("pagination", pagination);
-
-		List<BoardVO> AreaList = boardService.selectBoardMyList(pagination, session, title);
+		List<BoardVO> AreaList = boardService.selectBoardMyList(session, title);
 		mav.addObject("boardList", AreaList);
 
 		mav.addObject("title", title);
@@ -99,13 +113,13 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "") String title) {
 		ModelAndView mav = new ModelAndView("board/boardList.jsp");
 
-		int listCnt = boardService.selectBoardTodayListCnt(title);
+//		int listCnt = boardService.selectBoardTodayListCnt(title);
+//
+//		Pagination pagination = new Pagination();
+//		pagination.pageInfo(page, range, listCnt);
+//		mav.addObject("pagination", pagination);
 
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		mav.addObject("pagination", pagination);
-
-		List<BoardVO> AreaList = boardService.selectBoardTodayList(pagination, title);
+		List<BoardVO> AreaList = boardService.selectBoardTodayList(title);
 		mav.addObject("boardList", AreaList);
 
 		mav.addObject("title", title);

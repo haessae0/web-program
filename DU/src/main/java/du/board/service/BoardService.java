@@ -6,11 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import du.board.domain.BoardAttFileVO;
 import du.board.domain.BoardVO;
-import du.common.Pagination;
 
 public interface BoardService {
 
-	public List<BoardVO> selectBoardList(Pagination pagination, String title);
+	public List<BoardVO> selectBoardList(String title);
 
 	public int selectBoardListCnt(String title);
 
@@ -26,15 +25,18 @@ public interface BoardService {
 
 	public void deleteBoardAttFile(BoardAttFileVO criteria) throws Exception;
 
-	public List<BoardVO> selectBoardAreaList(Pagination pagination, HttpSession session, String title);
+	public List<BoardVO> selectBoardAreaList(HttpSession session, String title);
 
 	public int selectBoardAreaListCnt(HttpSession session, String title);
 
-	public List<BoardVO> selectBoardMyList(Pagination pagination, HttpSession session, String title);
+	public List<BoardVO> selectBoardMyList( HttpSession session, String title);
 
 	public int selectBoardMyListCnt(HttpSession session, String title);
 
-	public List<BoardVO> selectBoardTodayList(Pagination pagination, String title);
+	public List<BoardVO> selectBoardTodayList(String title);
 
 	public int selectBoardTodayListCnt(String title);
+	
+	public List<BoardVO> selectBoardCountryList(String title, String areacd);
+
 }

@@ -80,6 +80,7 @@ public class UserController {
 	@RequestMapping(value = "/findPw.do", method = RequestMethod.POST)
 	public void findPw(@ModelAttribute UserVO user, HttpServletResponse response) throws Exception{
 		userService.findPw(response, user);
+		
 	}
 	
 }

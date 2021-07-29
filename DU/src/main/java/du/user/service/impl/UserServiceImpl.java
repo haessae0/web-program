@@ -143,8 +143,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void findPw(HttpServletResponse response, UserVO user) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		// 아이디가 없으면
 		if (user.getUserId() != null) {
 			// 임시 비밀번호 생성
 			String pw = "";
@@ -156,7 +154,7 @@ public class UserServiceImpl implements UserService {
 			userDAO.updatePw(user);
 			// 비밀번호 변경 메일 발송
 			send_mail(user, "findPw");
-
+			
 		}
 	}
 }

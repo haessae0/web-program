@@ -89,6 +89,52 @@
 						<a class="collapse-item"
 							onclick="window.location.href='boardMyPage.do'">내가 판매하는 제품</a>
 					</div>
+
+				</div>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapsePages"
+				aria-expanded="true" aria-controls="collapsePages"> <i
+					class="fas fa-fw fa-folder"></i> <span>지역 별 게시판</span>
+			</a>
+				<div id="collapsePages" class="collapse"
+					aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">게시판</h6>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=01'">서울특별시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=02'">부산광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=03'">대구광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=04'">인천광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=05'">광주광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=06'">대전광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=07'">울산광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=08'">세종특별자치시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=09'">경기도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=10'">강원도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=11'">충청북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=12'">충청남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=13'">전라북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=14'">전라남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=15'">경상북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=16'">경상남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=17'">제주특별자치도</a>
+					</div>
 				</div>
 			<li class="nav-item active"><a class="nav-link"
 				onclick="window.location.href='boardWritePage.do'"> <i
@@ -223,28 +269,6 @@
 										</c:forEach>
 									</tbody>
 								</table>
-								<div id="paginationBox">
-									<ul class="pagination">
-										<c:if test="${pagination.prev}">
-											<li class="page-item"><a class="page-link" href="#"
-												onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
-										</c:if>
-
-										<c:forEach begin="${pagination.startPage}"
-											end="${pagination.endPage}" var="idx">
-											<li
-												class="page-item <c:out value="${pagination.page == idx ? 'active' : '' }"/> "><a
-												class="page-link" href="#"
-												onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">${idx}</a></li>
-										</c:forEach>
-
-										<c:if test="${pagination.next}">
-											<li class="page-item"><a class="page-link" href="#"
-												onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-										</c:if>
-									</ul>
-
-								</div>
 							</div>
 						</div>
 					</div>
@@ -346,32 +370,31 @@
 				// 					item.style.display = "none";
 				// 				}
 				// 			}
-				var url = "boardListPage.do";
-				url = url + "?title=" + searchTitle.value;
+				var url = "${url}?title=" + searchTitle.value;
 
 				location.href = url;
 			}
 		}
-
+/* 
 		//이전 버튼 이벤트
 		function fn_prev(page, range, rangeSize) {
 			var page = ((range - 2) * rangeSize) + 1;
 			var range = range - 1;
 
-			var url = "boardListPage.do";
-			url = url + "?page=" + page;
+			var url = "${url}?page=" + page;
 			url = url + "&range=" + range;
 			url = url + "&title=" + searchTitle.value;
 
 			location.href = url;
+			console.log(url);
 		}
 
 		//페이지 번호 클릭 이벤트
 		function fn_pagination(page, range, rangeSize) {
-			var url = "boardListPage.do";
-			url = url + "?page=" + page;
+			var url = "${url}?page=" + page;
 			url = url + "&range=" + range;
 			url = url + "&title=" + searchTitle.value;
+
 
 			location.href = url;
 		}
@@ -381,10 +404,10 @@
 			var page = parseInt((range * rangeSize)) + 1;
 			var range = parseInt(range) + 1;
 
-			var url = "boardListPage.do";
-			url = url + "?page=" + page;
+			var url = "${url}?page=" + page;
 			url = url + "&range=" + range;
 			url = url + "&title=" + searchTitle.value;
+
 
 			location.href = url;
 		}
@@ -392,7 +415,7 @@
 			var url = "boardInfoPage/" + idx + ".do"
 
 			location.href = url;
-		}
+		} */
 	</script>
 </body>
 

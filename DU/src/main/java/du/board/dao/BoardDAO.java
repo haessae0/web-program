@@ -8,7 +8,7 @@ import du.board.domain.BoardVO;
 
 public interface BoardDAO {
 
-	public List<BoardVO> selectBoardList(HashMap<String, Object> map);
+	public List<BoardVO> selectBoardList(String title);
 	
 	public int selectBoardListCnt(String title);
 	

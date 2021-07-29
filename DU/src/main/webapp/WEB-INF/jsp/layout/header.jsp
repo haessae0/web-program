@@ -1,27 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.bundle.js"></script>
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
 
-<meta charset="UTF-8">
+	<!-- Main Content -->
+	<div id="content">
+
+		<!-- Topbar -->
+		<nav
+			class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+			<!-- Sidebar Toggle (Topbar) -->
+			<form class="form-inline">
+				<button id="sidebarToggleTop"
+					class="btn btn-link d-md-none rounded-circle mr-3">
+					<i class="fa fa-bars"></i>
+				</button>
+			</form>
+
+			<!-- Topbar Search -->
+			<form
+				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+				<div class="input-group">
+					<input type="text" class="form-control bg-light border-0 small"
+						placeholder="Search for..." aria-label="Search"
+						aria-describedby="basic-addon2" id="searchTitle"
+						value="<c:out value='${title }'></c:out>">
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="button" id="searchBtn">
+							<i class="fas fa-search fa-sm"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<!-- Topbar Navbar -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Nav Item - User Information -->
+				<li class="nav-item dropdown no-arrow"><a
+					class="nav-link dropdown-toggle" href="#" id="userDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"><c:out
+								value="${USER.name}" /></span> <img class="img-profile rounded-circle"
+						src="${pageContext.request.contextPath}/js/img/undraw_profile.svg">
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+						aria-labelledby="userDropdown">
+						<a class="dropdown-item"
+							onclick="window.location.href='userInfoConfirmPage.do'"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+						</a>
+						<c:if test="${USER.userId == 'admin' }">
+							<a class="dropdown-item" href="#"> <i
+								class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+							</a>
+							<a class="dropdown-item" href="#"> <i
+								class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity
+								Log
+							</a>
+						</c:if>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							onclick="window.location.href='logout.do'" data-toggle="modal"
+							data-target="#logoutModal"> <i
+							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							Logout
+						</a>
+					</div></li>
+
+			</ul>
+
+		</nav>
+		<!-- End of Topbar -->
+	</div>
+</div>
 </head>
-<body>
-	<div class="logoDiv">
-		<img alt="대구대학교 로고" src="${pageContext.request.contextPath }/images/symbol_1.png"
-			onclick="window.location.href='${pageContext.request.contextPath }/mainPage.do'">
-	</div>
-	<ul class="infoUl">
-		<li><a href="areaPage.do">부서정보</a></li>
-	</ul>
-	<div class="userInfoDiv">
-		[<c:out value="${USER.name}" />]님 반갑습니다~ ^_^
-		<button type="button" class="btn btn-primary btn-sm" style="right" onclick="window.location.href='logout.do'">로그아웃</button>
-		<button type="button" class="btn btn-outline-primary btn-sm" style="right" onclick="window.location.href='userInfoConfirmPage.do'">내정보</button>
-	</div>
-</body>
 </html>

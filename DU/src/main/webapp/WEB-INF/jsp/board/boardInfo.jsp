@@ -125,6 +125,52 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 						<a class="collapse-item"
 							onclick="window.location.href='boardMyPage.do'">내가 판매하는 제품</a>
 					</div>
+
+				</div>
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapsePages"
+				aria-expanded="true" aria-controls="collapsePages"> <i
+					class="fas fa-fw fa-folder"></i> <span>지역 별 게시판</span>
+			</a>
+				<div id="collapsePages" class="collapse"
+					aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">게시판</h6>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=01'">서울특별시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=02'">부산광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=03'">대구광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=04'">인천광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=05'">광주광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=06'">대전광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=07'">울산광역시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=08'">세종특별자치시</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=09'">경기도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=10'">강원도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=11'">충청북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=12'">충청남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=13'">전라북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=14'">전라남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=15'">경상북도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=16'">경상남도</a>
+						<a class="collapse-item"
+							onclick="window.location.href='${pageContext.request.contextPath}/boardCountryPage.do?areacd=17'">제주특별자치도</a>
+					</div>
 				</div>
 			<li class="nav-item active"><a class="nav-link"
 				onclick="window.location.href='boardWritePage.do'"> <i
@@ -272,7 +318,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 					<div id="replyDiv" style="margin-top: 10px;">
 						<form action="${pageContext.request.contextPath}/replyWrite.do"
 							method="post">
-							<table class="table table-light" style="width: 50%;">
+							<table class="table table-light" style="width: 100%;">
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
 										<h6 class="m-0 font-weight-bold text-primary">댓글</h6>

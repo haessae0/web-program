@@ -14,8 +14,8 @@ import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO {
 
 	@Override
-	public List<BoardVO> selectBoardList(HashMap<String, Object> map) {
-		return selectList("Board.selectBoardList", map);
+	public List<BoardVO> selectBoardList(String title) {
+		return selectList("Board.selectBoardList", title);
 	}
 
 	@Override

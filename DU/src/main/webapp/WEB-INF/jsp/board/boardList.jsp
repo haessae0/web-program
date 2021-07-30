@@ -411,11 +411,12 @@
 
 			location.href = url;
 		}
+		*/
 		function trDblClick(idx) {
 			var url = "boardInfoPage/" + idx + ".do"
 
 			location.href = url;
-		} */
+		} 
 	</script>
 </body>
 
